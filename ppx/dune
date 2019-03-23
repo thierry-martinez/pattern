@@ -1,0 +1,6 @@
+(library
+  (name pattern)
+  (public_name pattern.ppx)
+  (preprocess (pps ppxlib.metaquot))
+  (library_flags (-linkall))
+  (libraries compiler-libs ppx_tools.metaquot ocaml-migrate-parsetree))

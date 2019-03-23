@@ -1,0 +1,4 @@
+(library
+   (name pattern_runtime)
+   (public_name pattern.runtime)
+   (libraries compiler-libs.common))

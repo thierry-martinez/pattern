@@ -1,0 +1,15 @@
+opam-version: "2.0"
+synopsis: "pattern"
+description: "pattern"
+maintainer: "Thierry Martinez <Thierry.Martinez@inria.fr>"
+authors: "Thierry Martinez <Thierry.Martinez@inria.fr>"
+homepage: "https://gitlab.inria.fr/tmartine/pattern"
+bug-reports: "https://gitlab.inria.fr/tmartine/pattern/issues"
+license: "BSD"
+dev-repo: "git+https://gitlab.inria.fr/tmartine/pattern.git"
+build: [
+  ["dune" "build" "-p" name "-j" jobs]]
+depends: [
+  "stdcompat"
+  "dune" {>= "1.2"}
+  "ocaml" {>= "4.02.0" & < "4.08.0"}]
