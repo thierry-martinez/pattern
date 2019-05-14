@@ -1,0 +1,4 @@
+(executable
+  (name tests)
+  (preprocess (pps pattern.ppx ppx_deriving.std value_quoter))
+  (libraries compiler-libs pattern.runtime))

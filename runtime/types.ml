@@ -1,12 +1,19 @@
-type mismatch = {
+type pattern = (Parsetree.pattern [@printer Pprintast.pattern])
+
+and expression = (Parsetree.expression [@printer Pprintast.expression])
+
+and mismatch = {
     ident : string;
-    expected : Parsetree.pattern;
-    got : Parsetree.pattern;
+    expected : pattern;
+    got : expression option;
   }
 
-type failure = {
-    common : Parsetree.pattern;
+and failure = {
+    common : pattern;
     mismatches : mismatch list;
   }
 
-type ('a, 'b) pattern = 'a -> ('b, failure) result
+and 'a pattern_result = ('a, failure) result
+      [@@deriving show]
+
+type ('a, 'b) matcher = ?quoted:Parsetree.expression -> 'a -> 'b pattern_result
