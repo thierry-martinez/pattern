@@ -1,6 +1,6 @@
 # Run-time patterns that explain match failures
 
-`ppx_pattern` is a PPX extension that generates functions from
+`pattern` is a PPX extension that generates functions from
 patterns that explain match failures by returning the common context
 and the list of differences between a pattern and a value.
 
