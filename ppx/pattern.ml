@@ -355,7 +355,7 @@ let expr_mapper (mapper : Ast_mapper.mapper) (expr : Parsetree.expression)
                                (Ast_helper.Exp.ident
                                   { loc; txt = Lident x}))))))] : (_, _) result)
               | Error e -> (Error e : (_, _) result)
-              end [@ocaml.warning "-27"])]
+              end [@ocaml.warning "-26-27"])]
         | PPat (_pat, Some _) ->
             raise (Location.Error (Location.error ~loc
               "unexcepted when clause"))
