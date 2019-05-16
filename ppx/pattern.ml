@@ -1,3 +1,9 @@
+module OCaml_version = Migrate_parsetree.OCaml_407
+
+module Ast_helper = OCaml_version.Ast.Ast_helper
+module Ast_mapper = OCaml_version.Ast.Ast_mapper
+module Parsetree = OCaml_version.Ast.Parsetree
+
 let build_pat ~loc pat : Parsetree.expression =
   [%expr (
    { ppat_desc = [%e pat]; ppat_loc = Location.none; ppat_attributes = [] }
@@ -322,7 +328,7 @@ let rec make_matcher' make_matcher (pat : Parsetree.pattern)
             [%e result]])
         Fun.id Fun.id
   | _ ->
-      failwith (Format.asprintf "unimplemented: %a" Pprintast.pattern pat)
+      Location.raise_errorf ~loc "unimplemented"
 
 let rec make_matcher (pat : Parsetree.pattern)
     : string list * Parsetree.expression =
@@ -373,5 +379,5 @@ let ppx_pattern_mapper = {
 
 let () =
   Migrate_parsetree.Driver.register ~name:"ppx_pattern"
-    (module Migrate_parsetree.OCaml_current)
+    (module OCaml_version)
     (fun _ _ -> ppx_pattern_mapper)
