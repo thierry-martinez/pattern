@@ -1,6 +1,6 @@
-type pattern = (Parsetree.pattern [@printer Pprintast.pattern])
+type pattern = (Ppxlib.pattern [@printer Ppxlib.Pprintast.pattern])
 
-and expression = (Parsetree.expression [@printer Pprintast.expression])
+and expression = (Ppxlib.expression [@printer Ppxlib.Pprintast.expression])
 
 and mismatch = {
     ident : string;
@@ -16,4 +16,4 @@ and failure = {
 and 'a pattern_result = ('a, failure) result
       [@@deriving show]
 
-type ('a, 'b) matcher = ?quoted:Parsetree.expression -> 'a -> 'b pattern_result
+type ('a, 'b) matcher = ?quoted:Ppxlib.expression -> 'a -> 'b pattern_result

@@ -5,7 +5,7 @@ and labeled_record = C of { x : int; y : int } | D of { x : bool; y : bool; z : 
 
 let quoter = object
   inherit Ppxlib_metaquot_lifters.expression_lifters Location.none
-  inherit [Parsetree.expression] lift
+  inherit [Ppxlib.expression] lift
 end
 
 let () =
@@ -88,6 +88,22 @@ let () =
     | Ok obj ->
         assert (obj#z = false);
         assert (obj#y = true);
+        true
+    | Error failure ->
+        Format.printf "%a@." Pattern_runtime.format_failure failure;
+        false);
+  assert (
+    match [%pattern? (D _)] ~quoted:(quoter#labeled_record (D { x = false; y = true; z = false})) (D { x = false; y = true; z = false }) with
+    | Ok () -> true
+    | Error failure ->
+        Format.printf "%a@." Pattern_runtime.format_failure failure;
+        false);
+  assert (
+    match [%pattern? [a; b; c]] ~quoted:(quoter#list quoter#int [1; 2; 3]) [1; 2; 3] with
+    | Ok obj ->
+        assert (obj#a = 1);
+        assert (obj#b = 2);
+        assert (obj#c = 3);
         true
     | Error failure ->
         Format.printf "%a@." Pattern_runtime.format_failure failure;
