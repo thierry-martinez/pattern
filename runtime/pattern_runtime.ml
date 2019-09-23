@@ -1,5 +1,8 @@
 include Types
 
+let check quoter (value : 'a) (pattern : ('a, 'b) matcher) =
+  pattern ~quoted:(quoter value) value
+
 let format_failure formatter failure =
   Format.fprintf formatter "@[<v>@[%a@]@ "
     Ppxlib.Pprintast.pattern failure.common;
