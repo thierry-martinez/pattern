@@ -8,9 +8,7 @@ module Ast_mapper = OCaml_version.Ast.Ast_mapper
 module Parsetree = OCaml_version.Ast.Parsetree
 
 let build_pat ~loc pat : Ppxlib.expression =
-  [%expr (
-   { ppat_desc = [%e pat]; ppat_loc = Location.none; ppat_attributes = [] }
-     : Ppxlib.pattern)]
+  [%expr Ppxlib.Ast_helper.Pat.mk [%e pat]]
 
 let build_pat_construct ~loc ctor arg : Ppxlib.expression =
   let lift_loc = Ppxlib_metaquot.Expr.lift loc in
