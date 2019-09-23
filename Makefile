@@ -8,7 +8,7 @@ examples := $(notdir $(wildcard $(examples_dir)/*))
 # dependency management.
 
 .PHONY : all
-all :
+all : pattern.opam
 	$(DUNE) build runtime/pattern_runtime.cmxa
 	$(DUNE) build ppx/pattern.cmxa
 
@@ -36,3 +36,6 @@ $(example) :
 	$(DUNE_PREFIX)/$(examples_dir)/$(example)/$(example).exe
 endef
 $(foreach example,$(examples),$(eval $(foreach_example)))
+
+pattern.opam :
+	$(DUNE) build pattern.opam
