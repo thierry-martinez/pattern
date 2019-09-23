@@ -1,4 +1,4 @@
-module OCaml_version = Migrate_parsetree.OCaml_407
+module OCaml_version = Migrate_parsetree.OCaml_408
 
 module From =
   Migrate_parsetree.Convert (OCaml_version) (Migrate_parsetree.OCaml_current)
