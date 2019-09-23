@@ -21,5 +21,5 @@ the list of differences between a pattern and a value.
  (depends
   (dune (>= 1.10.0))
   (ppxlib (>= 0.9.0))
-  ppx_show
+  (ppx_deriving (>= 4.4))
   (stdcompat (>= 10))))
