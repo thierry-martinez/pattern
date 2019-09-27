@@ -58,3 +58,23 @@ let () =
       Format.printf "%a@." Pattern_runtime.format_failure failure;
       assert false
 ```
+
+`Pattern_runtime.check` can be used to match a value against a pattern
+without having to repeat the value when calling the quoter. Since the
+value argument is passed before the pattern, if the type of the value
+is known during type inference, then it can be used to resolve the
+variant constructor and the record field names that appear in the
+pattern.
+
+```ocaml
+let () =
+  let v = { x = 1; y = 2; z = 3 } in
+  match Pattern_runtime.check quoter#example v [%pattern? { x; y; z }] with
+  | Ok binders ->
+      assert (binders#x = 1);
+      assert (binders#y = 2);
+      assert (binders#z = 3)
+  | Error failure ->
+      Format.printf "%a@." Pattern_runtime.format_failure failure;
+      assert false
+```
