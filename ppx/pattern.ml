@@ -8,7 +8,7 @@ module Ast_mapper = OCaml_version.Ast.Ast_mapper
 module Parsetree = OCaml_version.Ast.Parsetree
 
 let build_pat ~loc pat : Ppxlib.expression =
-  [%expr Ast_helper.Pat.mk [%e pat]]
+  [%expr Ppxlib.Ast_helper.Pat.mk [%e pat]]
 
 let build_pat_construct ~loc ctor arg : Ppxlib.expression =
   let lift_loc = Ppxlib_metaquot.Expr.lift loc in
@@ -47,7 +47,7 @@ let mismatch ~loc pat : Ppxlib.expression =
    let ident = Printf.sprintf "@%d" index in
    let loc = Location.none in
    Error {
-   common = Ast_helper.Pat.var { loc; txt = ident };
+   common = Ppxlib.Ast_helper.Pat.var { loc; txt = ident };
    mismatches = [{
      ident;
      expected = Parsetree.(
