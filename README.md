@@ -27,6 +27,9 @@ Parsetree.expression` where `'a` is the type of the matched value.
 Such a lifter can be derived for instance with the [`refl`] library
 (`Refl.Lift.Exp.lift [%refl: t] [] x` for lifting `x` of type `t`).
 
+[`metaquot`]: https://github.com/thierry-martinez/metaquot
+[`refl`]: https://github.com/thierry-martinez/refl
+
 ```ocaml
 type example = { x : int; y : int; z : int }
     [@@deriving refl]
