@@ -20,6 +20,7 @@ the list of differences between a pattern and a value.
 ")
  (depends
   (dune (>= 1.10.0))
-  (ppxlib (>= 0.9.0))
-  (ppx_deriving (>= 4.4))
+  metapp
+  metaquot
+  (ocaml-migrate-parsetree (>= 1.5.0))
   (stdcompat (>= 10))))

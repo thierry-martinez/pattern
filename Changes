@@ -1,3 +1,13 @@
+# Next version
+
+- moved to GitHub
+
+- do not rely on ppxlib anymore (use metapp and metaquoter)
+
+- pattern ppx rewriter package renamed as "pattern.ppx"
+
+- pattern runtime package renamed as "pattern"
+
 # pattern 0.1.1, 2019-09-27
 
 - compatible with OCaml 4.09.

@@ -1,8 +1,7 @@
 (library
-  (name pattern)
+  (name pattern_ppx)
   (public_name pattern.ppx)
-  (preprocess (pps ppxlib.metaquot))
+  (preprocess (pps metaquot.ppx))
   (library_flags (-linkall))
   (flags -open Stdcompat)
-  (libraries compiler-libs ocaml-migrate-parsetree stdcompat
-    ppxlib.metaquot))
+  (libraries compiler-libs ocaml-migrate-parsetree stdcompat metapp metaquot))

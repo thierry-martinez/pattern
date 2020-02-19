@@ -1,5 +1,4 @@
 (executable
   (name tests)
-  (preprocess (pps pattern.ppx ppxlib.traverse))
-  (flags -dsource)
-  (libraries compiler-libs ppxlib.metaquot_lifters pattern.runtime))
+  (preprocess (pps pattern.ppx metaquot.ppx))
+  (libraries compiler-libs metaquot pattern))
