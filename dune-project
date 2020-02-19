@@ -20,7 +20,8 @@ the list of differences between a pattern and a value.
 ")
  (depends
   (dune (>= 1.10.0))
-  metapp
-  metaquot
+  (metapp (>= 0.1.0))
+  (metaquot (>= 0.1.0))
+  (refl (>= 0.1.0))
   (ocaml-migrate-parsetree (>= 1.5.0))
   (stdcompat (>= 10))))
