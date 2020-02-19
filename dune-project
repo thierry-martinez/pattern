@@ -5,10 +5,10 @@
 (license BSD)
 (maintainers "Thierry Martinez <thierry.martinez@inria.fr>")
 (authors "Thierry Martinez <thierry.martinez@inria.fr>")
-(source (uri "git+https://gitlab.inria.fr/tmartine/pattern"))
-(homepage "https://gitlab.inria.fr/tmartine/pattern")
-(bug_reports "https://gitlab.inria.fr/tmartine/pattern")
-(documentation "https://gitlab.inria.fr/tmartine/pattern")
+(source (uri "git+https://github.com/thierry-martinez/pattern.git"))
+(homepage "https://github.com/thierry-martinez/pattern")
+(bug_reports "https://github.com/thierry-martinez/pattern")
+(documentation "https://github.com/thierry-martinez/pattern")
 
 (package
  (name pattern)
