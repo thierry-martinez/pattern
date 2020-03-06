@@ -19,7 +19,7 @@ that explain match failures by returning the common context and
 the list of differences between a pattern and a value.
 ")
  (depends
-  (ocaml (and (>= 4.03.0) (< 4.11.0)))
+  (ocaml (and (>= 4.03.0) (< 4.12.0)))
   (dune (>= 1.10.0))
   (metapp (>= 0.1.0))
   (metaquot (>= 0.1.0))
