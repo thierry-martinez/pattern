@@ -9,8 +9,8 @@ examples := $(notdir $(wildcard $(examples_dir)/*))
 
 .PHONY : all
 all : pattern.opam
-	$(DUNE) build runtime/pattern_runtime.cmxa
-	$(DUNE) build ppx/pattern.cmxa
+	$(DUNE) build runtime/pattern.cmxa
+	$(DUNE) build ppx/pattern_ppx.cmxa
 
 .PHONY : clean
 clean :

@@ -2,7 +2,7 @@
 
 - moved to GitHub
 
-- do not rely on ppxlib anymore (use metapp and metaquoter)
+- do not rely on ppxlib anymore (use metapp, metaquote and refl)
 
 - pattern ppx rewriter package renamed as "pattern.ppx"
 

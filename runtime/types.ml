@@ -1,9 +1,9 @@
 type pattern =
-    ((Parsetree.pattern [@mapopaque]) [@printer Ppxlib.Pprintast.pattern])
+    ((Parsetree.pattern [@opaque]) [@refl.printer Pprintast.pattern])
 
 and expression =
-    ((Parsetree.expression [@mapopaque])
-       [@printer Ppxlib.Pprintast.expression])
+    ((Parsetree.expression [@opaque])
+       [@refl.printer Pprintast.expression])
 
 and mismatch = {
     ident : string;
