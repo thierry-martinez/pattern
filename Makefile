@@ -1,41 +1,23 @@
-DUNE := dune
-DUNE_PREFIX := _build/default
-
-examples_dir = examples
-examples := $(notdir $(wildcard $(examples_dir)/*))
-
-# All targets are phony targets since we want to rely on dune for
-# dependency management.
+DUNE=dune
+FLAGS=
 
 .PHONY : all
-all : pattern.opam
-	$(DUNE) build runtime/pattern.cmxa
-	$(DUNE) build ppx/pattern_ppx.cmxa
+all :
+	$(DUNE) build $(FLAGS)
 
 .PHONY : clean
 clean :
-	dune clean
-
-.PHONY : tests
-tests :
-	$(DUNE) build tests/tests.exe
-	$(DUNE_PREFIX)/tests/tests.exe
+	$(DUNE) clean $(FLAGS)
 
 .PHONY : install
 install :
-	$(DUNE) build @install
-	$(DUNE) install
+	$(DUNE) build @install $(FLAGS)
+	$(DUNE) install $(FLAGS)
 
-.PHONY : examples
-examples : $(examples)
+.PHONY : doc
+doc :
+	$(DUNE) build @doc $(FLAGS)
 
-define foreach_example
-.PHONY : $(example)
-$(example) :
-	$(DUNE) build $(examples_dir)/$(example)/$(example).exe
-	$(DUNE_PREFIX)/$(examples_dir)/$(example)/$(example).exe
-endef
-$(foreach example,$(examples),$(eval $(foreach_example)))
-
-pattern.opam :
-	$(DUNE) build pattern.opam
+.PHONY : test
+test :
+	$(DUNE) runtest $(FLAGS)
