@@ -1,9 +1,9 @@
 type pattern =
-    ((Parsetree.pattern [@opaque]) [@refl.printer Pprintast.pattern])
+    ((Ppxlib.pattern [@opaque]) [@refl.printer Ppxlib.Pprintast.pattern])
 
 and expression =
-    ((Parsetree.expression [@opaque])
-       [@refl.printer Pprintast.expression])
+    ((Ppxlib.expression [@opaque])
+       [@refl.printer Ppxlib.Pprintast.expression])
 
 and mismatch = {
     ident : string;
@@ -20,4 +20,4 @@ and failure = {
 type 'a pattern_result = ('a, failure) result
       [@@deriving refl]
 
-type ('a, 'b) matcher = ?quoted:Parsetree.expression -> 'a -> 'b pattern_result
+type ('a, 'b) matcher = ?quoted:Ppxlib.expression -> 'a -> 'b pattern_result

@@ -3,12 +3,12 @@ include module type of struct
 end
 
 val check :
-    ('a -> Parsetree.expression) -> 'a -> ('a, 'b) matcher ->
+    ('a -> Ppxlib.expression) -> 'a -> ('a, 'b) matcher ->
       'b pattern_result
 
 val format_failure : Format.formatter -> failure -> unit
 
-val elim_type_constraints : Parsetree.expression -> Parsetree.expression
+val elim_type_constraints : Ppxlib.expression -> Ppxlib.expression
 
 val pp_failure : Format.formatter -> failure -> unit
 

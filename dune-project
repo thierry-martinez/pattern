@@ -9,6 +9,7 @@
 (homepage "https://github.com/thierry-martinez/pattern")
 (bug_reports "https://github.com/thierry-martinez/pattern")
 (documentation "https://github.com/thierry-martinez/pattern")
+(version "0.3.0")
 
 (package
  (name pattern)
@@ -21,8 +22,8 @@ the list of differences between a pattern and a value.
  (depends
   (ocaml (and (>= 4.03.0) (< 4.12.0)))
   (dune (>= 1.10.0))
-  (metapp (>= 0.1.0))
-  (metaquot (>= 0.1.0))
-  (refl (>= 0.1.0))
+  (metapp (>= 0.3.0))
+  (metaquot (>= 0.3.0))
+  (refl (>= 0.3.0))
   (ocaml-migrate-parsetree (>= 1.5.0))
   (stdcompat (>= 10))))
