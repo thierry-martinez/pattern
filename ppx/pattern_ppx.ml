@@ -6,7 +6,7 @@ let build_pat_construct ctor arg : Ppxlib.expression =
     [%e Metaquot.Exp.loc Metaquot.Exp.longident ctor], [%e arg])]
 
 let build_pat_tuple tuple : Ppxlib.expression =
-  build_pat [%expr Ppat_tuple [%e Metaquot.Exp.list Fun.id tuple]]
+  build_pat [%expr Ppat_tuple [%e Metapp.Exp.list tuple]]
 
 let sub i = Printf.sprintf "sub%d" i
 
@@ -184,8 +184,9 @@ let multiple_match_record ~loc make_matcher fields closed_flag destruct
         (fun args ->
           build_common (build_pat
             [%expr Ppat_record
-            ([%e Metaquot.Exp.list
-                Ppxlib.Ast_helper.Exp.tuple (List.map2 (fun (label, _) value ->
+            ([%e Metapp.Exp.list
+                (List.map2 (fun (label, _) value ->
+                  Ppxlib.Ast_helper.Exp.tuple
               [Metaquot.Exp.loc
                  Metaquot.Exp.longident label; value]) fields args)],
               [%e Metaquot.Exp.closed_flag closed_flag])]))
@@ -330,7 +331,7 @@ let rec make_matcher' make_matcher (pat : Ppxlib.pattern)
               let binders, result = k () in
               binders, [%expr
                  match __value__ with
-                 | [%p type_constr (Metaquot.Pat.list Fun.id sub_pats)] ->
+                 | [%p type_constr (Metapp.Pat.list sub_pats)] ->
                      [%e result]
                  | _ ->
                      [%e mismatch_here ~loc pat]])
